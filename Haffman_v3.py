@@ -5,7 +5,8 @@ def huffman_encoding_debug(freq_dict):
     step = 1
     while len(main_dict) > 1:
         print(f"\n--- Шаг {step} ---")
-        sorted_items = sorted(main_dict.items(), key=lambda item: item[1])
+        # sorted_items = sorted(main_dict.items(), key=lambda item: item[1])
+        sorted_items = sorted(main_dict.items(), key=lambda item: (item[1], tuple(-ord(c) for c in item[0])))
         print("Отсортированные элементы:", sorted_items)
 
         first_key, first_freq = sorted_items[0]
@@ -32,9 +33,9 @@ def huffman_encoding_debug(freq_dict):
 
 
 # frequency_dict = {"a": 15, "b": 7, "c": 6, "d": 6, "e": 5}
-frequency_dict = {" ": 0.145, "о": 0.095, "е": 0.074, "а": 0.064, "и": 0.064, "т": 0.056, "н": 0.056, "c": 0.047,
-                  "р": 0.041, "в": 0.039, "л": 0.036, "к": 0.029, "м": 0.026, "д": 0.026, "п": 0.024, "у": 0.021,
-                  "я": 0.019, "ы": 0.016, "з": 0.015, "ь": 0.015, "ъ": 0.015, "б": 0.015, "г": 0.014, "ч": 0.013,
+frequency_dict = {" ": 0.145, "о": 0.095, "е": 0.074, "а": 0.065, "и": 0.063, "т": 0.057, "н": 0.055, "c": 0.047,
+                  "р": 0.041, "в": 0.039, "л": 0.036, "к": 0.029, "м": 0.027, "д": 0.025, "п": 0.024, "у": 0.021,
+                  "я": 0.019, "ы": 0.016, "б": 0.015, "з": 0.015, "ь": 0.015, "ъ": 0.015,  "г": 0.014, "ч": 0.013,
                   "й": 0.01, "х": 0.009, "ж": 0.008, "ю": 0.007, "ш": 0.006, "щ": 0.003, "э": 0.003, "ф": 0.002}
 sentence = input("Введите текст:").lower()
 # for char in sentence:

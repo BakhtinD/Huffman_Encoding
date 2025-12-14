@@ -1,5 +1,5 @@
 import time
-import Efficiency_rating
+#import Efficiency_rating
 
 codes = {}
 
@@ -103,6 +103,6 @@ for c in sentence:
     print(shannon_fano_result[c], end="")
     # codes.clear()
 
-Efficiency_rating.analyze_coding_efficiency(sentence, huffman_result, shannon_fano_result, frequency_dict)
+# Efficiency_rating.analyze_coding_efficiency(sentence, huffman_result, shannon_fano_result, frequency_dict)
 
 input()

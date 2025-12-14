@@ -89,8 +89,8 @@ huffman_time = time.perf_counter() - huffman_time
 shannon_time = time.perf_counter()
 shannon_fano_result = shannon_fano_encode(freq_dict_for_sentence)
 shannon_time = time.perf_counter() - shannon_time
-print(huffman_time)
-print(shannon_time)
+print("Время, за которое выполнилось кодирование Хаффмана:", huffman_time)
+print("Время, за которое выполнилось кодирование Шеннона-Фано:",shannon_time)
 
 print("\nФинальный код Хаффмана:", huffman_result)
 print("\nФинальные коды символов методом Шеннона-Фано :", shannon_fano_result)

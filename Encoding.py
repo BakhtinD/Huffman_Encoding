@@ -1,5 +1,6 @@
 import time
-#import Efficiency_rating
+
+import Efficiency_rating
 
 codes = {}
 
@@ -90,9 +91,9 @@ shannon_time = time.perf_counter()
 shannon_fano_result = shannon_fano_encode(freq_dict_for_sentence)
 shannon_time = time.perf_counter() - shannon_time
 print("Время, за которое выполнилось кодирование Хаффмана:", huffman_time)
-print("Время, за которое выполнилось кодирование Шеннона-Фано:",shannon_time)
+print("Время, за которое выполнилось кодирование Шеннона-Фано:", shannon_time)
 
-print("\nФинальный код Хаффмана:", huffman_result)
+print("\nФинальные коды Хаффмана:", huffman_result)
 print("\nФинальные коды символов методом Шеннона-Фано :", shannon_fano_result)
 print("Сжатое предложение Хаффмана: ", end="")
 for c in sentence:
@@ -103,6 +104,11 @@ for c in sentence:
     print(shannon_fano_result[c], end="")
     # codes.clear()
 
-# Efficiency_rating.analyze_coding_efficiency(sentence, huffman_result, shannon_fano_result, frequency_dict)
 
+
+
+# Efficiency_rating.analyze_coding_efficiency(sentence, huffman_result, shannon_fano_result, frequency_dict)
+# print(Efficiency_rating.get_n(huffman_result, sentence))
+# print(Efficiency_rating.get_n(shannon_fano_result, sentence))
+Efficiency_rating.analyze_coding_efficiency(sentence, huffman_result, shannon_fano_result)
 input()

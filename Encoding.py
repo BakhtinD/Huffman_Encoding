@@ -71,18 +71,18 @@ def shannon_fano_encode(dictionary, prefix=""):
     return codes
 
 
-frequency_dict = {" ": 0.145, "о": 0.095, "е": 0.074, "а": 0.065, "и": 0.063, "т": 0.057, "н": 0.055, "с": 0.047,
-                  "р": 0.041, "в": 0.039, "л": 0.036, "к": 0.029, "м": 0.027, "д": 0.025, "п": 0.024, "у": 0.021,
-                  "я": 0.019, "ы": 0.016, "б": 0.015, "з": 0.015, "ь": 0.015, "ъ": 0.015, "г": 0.014, "ч": 0.013,
-                  "й": 0.01, "х": 0.009, "ж": 0.008, "ю": 0.007, "ш": 0.006, "щ": 0.003, "э": 0.003, "ф": 0.002}
+# frequency_dict = {" ": 0.145, "о": 0.095, "е": 0.074, "а": 0.065, "и": 0.063, "т": 0.057, "н": 0.055, "с": 0.047,
+#                   "р": 0.041, "в": 0.039, "л": 0.036, "к": 0.029, "м": 0.027, "д": 0.025, "п": 0.024, "у": 0.021,
+#                   "я": 0.019, "ы": 0.016, "б": 0.015, "з": 0.015, "ь": 0.015, "ъ": 0.015, "г": 0.014, "ч": 0.013,
+#                   "й": 0.01, "х": 0.009, "ж": 0.008, "ю": 0.007, "ш": 0.006, "щ": 0.003, "э": 0.003, "ф": 0.002}
 sentence = input("Введите текст:").lower()
 
-freq_dict_for_sentence = {}
+freq_dict_for_sentence = Efficiency_rating.get_dict_with_frequencies_in_text(sentence)
 
-for char in sentence:
-    freq_dict_for_sentence[char] = frequency_dict.get(char, 0.001)
+# for char in sentence:
+#     freq_dict_for_sentence[char] = frequency_dict.get(char, 0.001)
 
-print(frequency_dict)
+# print(frequency_dict)
 print(freq_dict_for_sentence)
 huffman_time = time.perf_counter()
 huffman_result = huffman_encode(freq_dict_for_sentence)

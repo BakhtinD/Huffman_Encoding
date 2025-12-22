@@ -2,12 +2,6 @@ import math
 
 
 def calculate_entropy(sentence):
-    """
-    Простой расчет энтропии Шеннона.
-
-    Формула: H = -Σ p(i) * log₂(p(i))
-    где p(i) - вероятность i-го символа
-    """
     freq_dict = get_dict_with_frequencies_in_text(sentence)
     entropy = 0
     for prob in freq_dict.values():

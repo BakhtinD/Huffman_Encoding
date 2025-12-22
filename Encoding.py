@@ -49,12 +49,10 @@ def shannon_fano_encode(dictionary, prefix=""):
         sorted_items = sorted(dictionary.items(), key=lambda item: item[1], reverse=True)
         freq_for_all_chars = sum(dictionary.values())
         middle_of_all_chars = freq_for_all_chars / 2
-        print("middle: ", middle_of_all_chars)
         freq_sum = 0
         group1 = {}
         group2 = {}
         for symbol, freq in sorted_items:
-            print("element: ", symbol, freq)
             if abs(freq_sum - middle_of_all_chars) > abs(freq_sum + freq - middle_of_all_chars) or len(group1) == 0:
                 group1[symbol] = freq
                 freq_sum += freq
@@ -71,22 +69,15 @@ def shannon_fano_encode(dictionary, prefix=""):
     return codes
 
 
-# frequency_dict = {" ": 0.145, "о": 0.095, "е": 0.074, "а": 0.065, "и": 0.063, "т": 0.057, "н": 0.055, "с": 0.047,
-#                   "р": 0.041, "в": 0.039, "л": 0.036, "к": 0.029, "м": 0.027, "д": 0.025, "п": 0.024, "у": 0.021,
-#                   "я": 0.019, "ы": 0.016, "б": 0.015, "з": 0.015, "ь": 0.015, "ъ": 0.015, "г": 0.014, "ч": 0.013,
-#                   "й": 0.01, "х": 0.009, "ж": 0.008, "ю": 0.007, "ш": 0.006, "щ": 0.003, "э": 0.003, "ф": 0.002}
 sentence = input("Введите текст:").lower()
 
 freq_dict_for_sentence = Efficiency_rating.get_dict_with_frequencies_in_text(sentence)
-
-# for char in sentence:
-#     freq_dict_for_sentence[char] = frequency_dict.get(char, 0.001)
-
-# print(frequency_dict)
-print(freq_dict_for_sentence)
+print("Словарь с вероятностями символов:", freq_dict_for_sentence)
+print("Алгоритм Хаффмана")
 huffman_time = time.perf_counter()
 huffman_result = huffman_encode(freq_dict_for_sentence)
 huffman_time = time.perf_counter() - huffman_time
+print("Алгоритм Шеннона-Фано")
 shannon_time = time.perf_counter()
 shannon_fano_result = shannon_fano_encode(freq_dict_for_sentence)
 shannon_time = time.perf_counter() - shannon_time
@@ -102,13 +93,6 @@ print()
 print("Сжатое предложение Шеннона-Фано: ", end="")
 for c in sentence:
     print(shannon_fano_result[c], end="")
-    # codes.clear()
 
-
-
-
-# Efficiency_rating.analyze_coding_efficiency(sentence, huffman_result, shannon_fano_result, frequency_dict)
-# print(Efficiency_rating.get_n(huffman_result, sentence))
-# print(Efficiency_rating.get_n(shannon_fano_result, sentence))
 Efficiency_rating.analyze_coding_efficiency(sentence, huffman_result, shannon_fano_result)
 input()
